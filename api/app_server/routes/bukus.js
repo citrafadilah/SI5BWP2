@@ -8,15 +8,15 @@ const BukuController = require("../controller/buku")
 // });
 
 //insert
-router.post('/', BukuController.createBuku);
+router.post('/',BukuController.createBuku);
 
 //select
-router.get("/", BukuController.readBuku);
+router.get("/",BukuController.readBuku);
 
 //delete
-router.delete('/:id', BukuController.deleteBuku);
+router.delete('/:id',BukuController.deleteBuku);
 
 //update
-router.put('/:id', BukuController.updateBuku);
+router.put('/:id',BukuController.updateBuku);
 
 module.exports = router;

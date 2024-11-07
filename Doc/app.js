@@ -4,13 +4,11 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-var indexRouter = require('./app_server/routes/index');
-var usersRouter = require('./app_server/routes/users');
-var bukusRouter = require('./app_server/routes/bukus');
+var indexRouter = require('./routes/index');
+var usersRouter = require('./routes/users');
+var bioskopsRouter = require('./routes/bioskops');
 
-// const mongoose = require("mongoose");
-
-require("./app_server/model/db")
+const mongoose = require("mongoose");
 
 //CORS Enabled
 //Cross Origin Resource Sharing
@@ -26,7 +24,7 @@ app.use((req,res,next)=>{
 });
 
 // mongoose.connect(
-//   "mongodb+srv://mdp:haechan01y@cluster0.myncj.mongodb.net/dbbuku?retryWrites=true&w=majority&appName=Cluster0"
+//   "mongodb+srv://mdp:haechan01y@cluster0.myncj.mongodb.net/dbbioskop?retryWrites=true&w=majority&appName=Cluster0"
 // ).then(()=>{
 //   console.log("Connected to Database");
 // }).catch((err)=>{
@@ -34,15 +32,14 @@ app.use((req,res,next)=>{
 //   console.log("Connection Failed");
 // });
 
-
-// mongoose.connect(
-//   "mongodb://localhost:27017/dbbuku"
-// ).then(()=>{
-//   console.log("Connected to Database");
-// }).catch((err)=>{
-//   // console.error('App starting error:', err.stack);
-//   console.log("Connection Failed");
-// });
+mongoose.connect(
+  "mongodb://localhost:27017/dbbioskop"
+).then(()=>{
+  console.log("Connected to Database");
+}).catch((err)=>{
+  // console.error('App starting error:', err.stack);
+  console.log("Connection Failed");
+});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -56,7 +53,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/buku', bukusRouter);
+app.use('/bioskop', bioskopsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -75,3 +72,5 @@ app.use(function(err, req, res, next) {
 });
 
 module.exports = app;
+
+
