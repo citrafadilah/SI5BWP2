@@ -3,9 +3,10 @@ import { NgForm } from '@angular/forms';
 import { BukuService } from '../services/buku.service';
 
 @Component({
-  selector: 'app-buku',
-  templateUrl: './buku.component.html',
-  styleUrl: './buku.component.css'
+    selector: 'app-buku',
+    templateUrl: './buku.component.html',
+    styleUrl: './buku.component.css',
+    standalone: false
 })
 export class BukuComponent {
   constructor(public bukuService : BukuService) {
